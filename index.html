@@ -329,19 +329,12 @@ footer {
     </div>
 </footer>
 
-    <div class="lightbox" id="lightbox">
-    <img src="" id="lightbox-img">
-</div>
+    
     <script>
 const lightbox = document.getElementById("lightbox");
 const lightboxImg = document.getElementById("lightbox-img");
 
-document.querySelectorAll(".gallery-item img").forEach(img => {
-    img.addEventListener("click", () => {
-        lightbox.classList.add("active");
-        lightboxImg.src = img.src;
-    });
-});
+
 
 lightbox.addEventListener("click", () => {
     lightbox.classList.remove("active");
@@ -353,6 +346,58 @@ lightbox.addEventListener("click", () => {
         <button class="lightbox-btn" id="prev">←</button>
         <button class="lightbox-btn" id="next">→</button>
     </div>
-</div>  
+</div> 
+   <script>
+const lightbox = document.getElementById("lightbox");
+const lightboxImg = document.getElementById("lightbox-img");
+const nextBtn = document.getElementById("next");
+const prevBtn = document.getElementById("prev");
+
+let currentImages = [];
+let currentIndex = 0;
+
+const albumImages = document.querySelectorAll("img[data-group]");
+
+albumImages.forEach((img) => {
+    img.addEventListener("click", (e) => {
+        e.stopPropagation();
+
+        const group = img.getAttribute("data-group");
+        currentImages = Array.from(document.querySelectorAll(`img[data-group="${group}"]`));
+        currentIndex = currentImages.findIndex(item => item.src === img.src);
+
+        lightboxImg.src = currentImages[currentIndex].src;
+        lightbox.classList.add("active");
+    });
+});
+
+nextBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    if (currentImages.length === 0) return;
+
+    currentIndex++;
+    if (currentIndex >= currentImages.length) {
+        currentIndex = 0;
+    }
+
+    lightboxImg.src = currentImages[currentIndex].src;
+});
+
+prevBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    if (currentImages.length === 0) return;
+
+    currentIndex--;
+    if (currentIndex < 0) {
+        currentIndex = currentImages.length - 1;
+    }
+
+    lightboxImg.src = currentImages[currentIndex].src;
+});
+
+lightbox.addEventListener("click", () => {
+    lightbox.classList.remove("active");
+});
+</script> 
 </body>
 </html>
