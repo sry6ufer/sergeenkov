@@ -2,73 +2,196 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<title>Андрей — фотограф и видеограф</title>
+<title>SERGEENKOV — фотограф и видеограф</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
+* {
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background: #0d0d0d;
+    background: #0b0b0b;
     color: white;
+    line-height: 1.5;
 }
+
 section {
-    padding: 80px 20px;
-    text-align: center;
+    padding: 70px 20px;
 }
-h1 {
-    font-size: 40px;
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
 }
-.gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 10px;
+
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.65)),
+    url("photo_2026-04-12_15-25-14.jpg") center/cover no-repeat;
+    text-align: left;
 }
-.gallery img {
-    width: 100%;
-    height: auto;
+
+.hero h1 {
+    font-size: 64px;
+    margin: 0 0 10px;
+    letter-spacing: 3px;
 }
+
+.hero p {
+    font-size: 20px;
+    max-width: 600px;
+    color: #d6d6d6;
+    margin: 0 0 15px;
+}
+
 .button {
     display: inline-block;
-    padding: 15px 30px;
+    padding: 14px 28px;
     background: white;
     color: black;
     text-decoration: none;
     margin-top: 20px;
+    border-radius: 6px;
+    font-weight: bold;
+}
+
+h2 {
+    font-size: 32px;
+    margin-bottom: 25px;
+}
+
+.about p,
+.contacts p {
+    max-width: 700px;
+    color: #d0d0d0;
+    font-size: 18px;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 18px;
+}
+
+.gallery img {
+    width: 100%;
+    height: 420px;
+    object-fit: cover;
+    border-radius: 10px;
+    display: block;
+}
+
+.services {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 18px;
+}
+
+.card {
+    background: #151515;
+    padding: 24px;
+    border-radius: 10px;
+}
+
+.card h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.card p {
+    margin: 0;
+    color: #cfcfcf;
+}
+
+footer {
+    padding: 30px 20px;
+    text-align: center;
+    color: #888;
+    border-top: 1px solid #1f1f1f;
+}
+
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 42px;
+    }
+
+    .hero p {
+        font-size: 18px;
+    }
+
+    .gallery img {
+        height: 320px;
+    }
 }
 </style>
 </head>
 
 <body>
 
-<section>
-<h1>SERGEENKOV</h1>
-<p>Фотограф и видеограф</p>
-<p>Съёмка автомобилей и визуальный контент для людей и брендов</p>
-<a class="button" href="https://t.me/sergeenkovsbs" target="_blank">Связаться со мной</a>
+<section class="hero">
+    <div class="container">
+        <h1>SERGEENKOV</h1>
+        <p>Фотограф и видеограф</p>
+        <p>Съёмка автомобилей, визуального контента и проектов, где важны стиль, атмосфера и подача.</p>
+        <a class="button" href="https://t.me/sergeenkovsbs" target="_blank">Связаться со мной</a>
+    </div>
 </section>
 
 <section>
-<h2>Портфолио (автомобили)</h2>
-<div class="gallery">
-<img src="photo_2026-04-12_15-25-14.jpg">
-<img src="photo_2026-04-12_15-25-13.jpg">
-<img src="photo_2026-04-12_15-25-10.jpg">
-</div>
+    <div class="container">
+        <h2>Портфолио автомобилей</h2>
+        <div class="gallery">
+            <img src="photo_2026-04-12_15-25-14.jpg" alt="Автомобиль 1">
+            <img src="photo_2026-04-12_15-25-13.jpg" alt="Автомобиль 2">
+            <img src="photo_2026-04-12_15-25-10.jpg" alt="Автомобиль 3">
+        </div>
+    </div>
+</section>
+
+<section class="about">
+    <div class="container">
+        <h2>Обо мне</h2>
+        <p>Я занимаюсь автомобильной фото- и видеосъёмкой. Для меня важно не просто показать машину, а передать её характер, форму, свет и атмосферу. Также работаю с визуальным контентом для людей и брендов.</p>
+    </div>
 </section>
 
 <section>
-<h2>Портреты</h2>
-<div class="gallery">
-<img src="https://via.placeholder.com/600x400">
-<img src="https://via.placeholder.com/600x400">
-</div>
+    <div class="container">
+        <h2>Услуги</h2>
+        <div class="services">
+            <div class="card">
+                <h3>Автосъёмка</h3>
+                <p>Фотосъёмка автомобилей для личных проектов, продажи и социальных сетей.</p>
+            </div>
+            <div class="card">
+                <h3>Видеосъёмка</h3>
+                <p>Динамичные видео и reels с акцентом на стиль и детали.</p>
+            </div>
+            <div class="card">
+                <h3>Контент для брендов</h3>
+                <p>Визуальный материал для автосалонов, студий, бизнеса и личного бренда.</p>
+            </div>
+        </div>
+    </div>
 </section>
 
-<section>
-<h2>Контакты</h2>
-<p>Телефон: +7 931 209 08 05</p>
-<p>Telegram: @sergeenkovsbs</p>
+<section class="contacts">
+    <div class="container">
+        <h2>Контакты</h2>
+        <p>Телефон: +7 931 209 08 05</p>
+        <p>Telegram: @sergeenkovsbs</p>
+    </div>
 </section>
+
+<footer>
+    <div class="container">
+        © SERGEENKOV
+    </div>
+</footer>
 
 </body>
 </html>
