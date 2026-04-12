@@ -30,12 +30,14 @@ section {
     background: 
 linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.95)),
 url("bg.jpg") center/cover no-repeat;
+    background-attachment: fixed;
 }
 
 .hero h1 {
     font-size: 64px;
     margin: 0 0 10px;
     letter-spacing: 3px;
+    animation: fadeIn 1s ease forwards;
 }
 
 .hero p {
@@ -43,6 +45,7 @@ url("bg.jpg") center/cover no-repeat;
     max-width: 600px;
     color: #d6d6d6;
     margin: 0 0 15px;
+    animation: fadeIn 1.5s ease forwards;
 }
 
 .button {
@@ -52,8 +55,15 @@ url("bg.jpg") center/cover no-repeat;
     color: black;
     text-decoration: none;
     margin-top: 20px;
-    border-radius: 6px;
+    border-radius: 8px;
     font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.button:hover {
+    background: #111;
+    color: white;
+    transform: translateY(-3px);
 }
 
 h2 {
@@ -125,6 +135,16 @@ footer {
     }
 }
 </style>
+  @keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}  
 </head>
 
 <body>
