@@ -88,7 +88,7 @@
       padding-top: 90px;
       background:
         linear-gradient(rgba(0, 0, 0, 0.38), rgba(0, 0, 0, 0.82)),
-        url("images/bmw/b7.jpg") center/cover no-repeat;
+        url("bg.jpg") center/cover no-repeat;
     }
 
     .hero::after {
@@ -207,8 +207,7 @@
       align-items: stretch;
     }
 
-    .glass-card {
-      background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+    .glass-card {background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
       border: 1px solid rgba(255, 255, 255, 0.08);
       border-radius: 26px;
       box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
@@ -249,6 +248,7 @@
     .portfolio-card {
       overflow: hidden;
       transition: transform 0.3s ease, border-color 0.3s ease;
+      cursor: pointer;
     }
 
     .portfolio-card:hover {
@@ -259,7 +259,6 @@
     .portfolio-cover {
       position: relative;
       overflow: hidden;
-      cursor: pointer;
     }
 
     .portfolio-cover::after {
@@ -411,8 +410,8 @@
       overflow: hidden;
       min-height: 72vh;
       display: flex;
-      align-items: center;justify-content: center;
-    }
+      align-items: center;
+      justify-content: center;}
 
     .album-main-image {
       width: 100%;
@@ -631,7 +630,7 @@
         </div>
 
         <div class="glass-card about-image">
-          <img src="images/lixiang/L7.jpg" alt="Портфолио фотографа" />
+          <img src="L7.jpg" alt="Портфолио фотографа" />
         </div>
       </div>
     </div>
@@ -653,7 +652,7 @@
       <div class="portfolio-grid">
         <article class="glass-card portfolio-card album-trigger" data-album="lixiang">
           <div class="portfolio-cover">
-            <img src="images/lixiang/L7.jpg" alt="Li Xiang" />
+            <img src="L7.jpg" alt="Li Xiang" />
           </div>
           <div class="portfolio-content">
             <h3>Li Xiang</h3>
@@ -663,7 +662,7 @@
 
         <article class="glass-card portfolio-card album-trigger" data-album="ferrari">
           <div class="portfolio-cover">
-            <img src="images/ferrari/f7.jpg" alt="Ferrari" />
+            <img src="f7.jpg" alt="Ferrari" />
           </div>
           <div class="portfolio-content">
             <h3>Ferrari</h3>
@@ -673,7 +672,7 @@
 
         <article class="glass-card portfolio-card album-trigger" data-album="bmw">
           <div class="portfolio-cover">
-            <img src="images/bmw/b7.jpg" alt="BMW M5" />
+            <img src="b7.jpg" alt="BMW M5" />
           </div>
           <div class="portfolio-content">
             <h3>BMW M5</h3>
@@ -727,7 +726,8 @@
           пиши. Обсудим задачу, стиль и формат съемки.
         </p>
         <div class="contact-links">
-          <a href="https://t.me/sergeenkov" target="_blank" class="btn btn-primary">Telegram</a><a href="mailto:sergeenkov@gmail.com" class="btn btn-secondary">Email</a>
+          <a href="https://t.me/sergeenkov" target="_blank" class="btn btn-primary">Telegram</a>
+          <a href="mailto:sergeenkov@gmail.com" class="btn btn-secondary">Email</a>
         </div>
       </div>
     </div>
@@ -765,37 +765,37 @@
       lixiang: {
         title: "Li Xiang",
         images: [
-          "images/lixiang/L7.jpg",
-          "images/lixiang/L.jpg",
-          "images/lixiang/L2.jpg",
-          "images/lixiang/L3.jpg",
-          "images/lixiang/L4.jpg",
-          "images/lixiang/L5.jpg",
-          "images/lixiang/L6.jpg"
+          "L7.jpg",
+          "L.jpg",
+          "L2.jpg",
+          "L3.jpg",
+          "L4.jpg",
+          "L5.jpg",
+          "L6.jpg"
         ]
       },
       ferrari: {
         title: "Ferrari",
         images: [
-          "images/ferrari/f7.jpg",
-          "images/ferrari/f.jpg",
-          "images/ferrari/f2.jpg",
-          "images/ferrari/f3.jpg",
-          "images/ferrari/f4.jpg",
-          "images/ferrari/f5.jpg",
-          "images/ferrari/f6.jpg"
+          "f7.jpg",
+          "f.jpg",
+          "f2.jpg",
+          "f3.jpg",
+          "f4.jpg",
+          "f5.jpg",
+          "f6.jpg"
         ]
       },
       bmw: {
         title: "BMW M5",
         images: [
-          "images/bmw/b7.jpg",
-          "images/bmw/b.jpg",
-          "images/bmw/b2.jpg",
-          "images/bmw/b3.jpg",
-          "images/bmw/b4.jpg",
-          "images/bmw/b5.jpg",
-          "images/bmw/b6.jpg"
+          "b7.jpg",
+          "b.jpg",
+          "b2.jpg",
+          "b3.jpg",
+          "b4.jpg",
+          "b5.jpg",
+          "b6.jpg"
         ]
       }
     };
@@ -855,7 +855,9 @@
       renderAlbumImage();
       albumModal.classList.add("active");
       document.body.style.overflow = "hidden";
-    }function closeAlbum() {
+    }
+
+    function closeAlbum() {
       albumModal.classList.remove("active");
       document.body.style.overflow = "";
     }
@@ -866,8 +868,7 @@
       renderAlbumImage();
     }
 
-    function prevImage() {
-      const album = albums[currentAlbumKey];
+    function prevImage() {const album = albums[currentAlbumKey];
       currentImageIndex = (currentImageIndex - 1 + album.images.length) % album.images.length;
       renderAlbumImage();
     }
