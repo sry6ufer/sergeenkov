@@ -14,7 +14,6 @@
 
     :root {
       --bg: #080808;
-      --bg-soft: #101010;
       --border: rgba(255, 255, 255, 0.08);
       --text: #ffffff;
       --muted: rgba(255, 255, 255, 0.72);
@@ -63,11 +62,9 @@
     }
 
     header {
-      position: fixed;
-      inset: 0 0 auto 0;
-      z-index: 1000;
-      background: rgba(8, 8, 8, 0.78);
-      backdrop-filter: blur(14px);
+      position: relative;
+      z-index: 100;
+      background: rgba(8, 8, 8, 0.92);
       border-bottom: 1px solid rgba(255, 255, 255, 0.07);
     }
 
@@ -106,7 +103,7 @@
       min-height: 100vh;
       display: flex;
       align-items: center;
-      padding-top: 96px;
+      padding-top: 40px;
       background:
         linear-gradient(rgba(0,0,0,0.32), rgba(0,0,0,0.82)),
         url("bg.jpg") center/cover no-repeat;
@@ -642,6 +639,40 @@
       object-fit: cover;
     }
 
+    .to-top {
+      position: fixed;
+      right: 16px;
+      bottom: 16px;
+      width: 52px;
+      height: 52px;
+      border: none;
+      border-radius: 50%;
+      background: rgba(0,0,0,0.72);
+      color: #fff;
+      font-size: 22px;
+      cursor: pointer;
+      z-index: 4000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.28);
+      backdrop-filter: blur(10px);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(10px);
+      transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease;
+    }
+
+    .to-top.show {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .to-top:hover {
+      background: rgba(255,255,255,0.14);
+    }
+
     @media (max-width: 1100px) {
       .hero h1 {
         font-size: 58px;
@@ -710,7 +741,7 @@
 
       .hero {
         min-height: auto;
-        padding-top: 130px;
+        padding-top: 40px;
         padding-bottom: 60px;
         background-position: center center;
       }
@@ -952,6 +983,14 @@
 
       .thumb img {
         height: 66px;
+      }
+
+      .to-top {
+        right: 12px;
+        bottom: 12px;
+        width: 46px;
+        height: 46px;
+        font-size: 20px;
       }
     }
   </style>
@@ -1223,6 +1262,8 @@
     </div>
   </div>
 
+  <button class="to-top" id="toTopBtn" aria-label="Наверх">↑</button>
+
   <script>
     const albums = {
       bmw: {
@@ -1278,6 +1319,7 @@
     const albumCounter = document.getElementById("albumCounter");
     const thumbs = document.getElementById("thumbs");
     const modalViewer = document.getElementById("modalViewer");
+    const toTopBtn = document.getElementById("toTopBtn");
 
     function handleCardKey(event, albumName) {
       if (event.key === "Enter" || event.key === " ") {
@@ -1404,6 +1446,21 @@
       if (diff > 0) next();
       if (diff < 0) prev();
     }, { passive: true });
+
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 400) {
+        toTopBtn.classList.add("show");
+      } else {
+        toTopBtn.classList.remove("show");
+      }
+    });
+
+    toTopBtn.addEventListener("click", () => {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+    });
   </script>
 </body>
 </html>
